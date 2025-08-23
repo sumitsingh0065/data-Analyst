@@ -1,0 +1,27 @@
+import pandas as pd
+
+df = pd.read_csv("your_dataset.csv")
+
+print("First 5 rows:")
+print(df.head())
+
+print("\nDataset Info:")
+print(df.info())
+
+print("\nSummary Statistics:")
+print(df.describe())
+
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+print("\nUnique Values:")
+print(df.nunique())
+
+print("\nAverage values by category:")
+if "Category" in df.columns:
+    print(df.groupby("Category").mean(numeric_only=True))
+
+print("\nCorrelation Matrix:")
+print(df.corr(numeric_only=True))
+
+df.to_csv("cleaned_dataset.csv", index=False)
